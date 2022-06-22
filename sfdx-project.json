@@ -8,5 +8,6 @@
   "name": "Ebury_Test_Luca_Gouvea",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "54.0"
+  "sourceApiVersion": "54.0",
+  "outputdir": "C:/Users/lcglu/Documents/Ebury_Test_Luca_Gouvea/force-app"  
 }

@@ -1,0 +1,7 @@
+A new trade has been created with the following data:
+Sell Currency: %%SELL_CURRENCY%%
+Sell Amount: %%SELL_AMOUNT%%
+Buy Currency: %%BUY_CURRENCY%%
+Buy Amount: %%BUY_AMOUNT%%
+Rate: %%RATE%%
+Booked Date: %%DATETIME%%
