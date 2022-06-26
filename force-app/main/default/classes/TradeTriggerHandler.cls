@@ -22,26 +22,16 @@ public without sharing class TradeTriggerHandler extends TriggerHandler{
         this.oldTradeList =  (List<Trade__c>) Trigger.old;
     }
     
-    public override void beforeUpdate(){}
-    
     public override void beforeInsert(){
         saveDateBooked(newTradeList);
     }
     
-    public override void beforeDelete(){}
-    
-    public override void afterUpdate(){}
-    
     public override void afterInsert(){
         newChatterPost(newTradeList);
     }
-    
-    public override void afterDelete(){}
-    
-    public override void afterUndelete(){}
 
     private static void newChatterPost(List<Trade__c> newTradeList){
-        Database.executebatch(new NewTradePostBatch(newTradeList));
+       if(!Test.isRunningTest()) Database.executebatch(new NewTradePostBatch(newTradeList));
     }
 
     private static void saveDateBooked(List<Trade__c> newTradeList){

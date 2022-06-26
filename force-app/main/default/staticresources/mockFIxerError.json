@@ -1,0 +1,8 @@
+{
+    "success": false,
+    "error": {
+        "code": 202,
+        "type": "invalid_currency_codes",
+        "info": "You have provided one or more invalid Currency Codes. [Required format: currencies=EUR,USD,GBP,...]"
+    }
+}

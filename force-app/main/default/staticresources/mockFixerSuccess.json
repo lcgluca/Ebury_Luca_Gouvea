@@ -1,0 +1,9 @@
+{
+    "success": true,
+    "timestamp": 1656279424,
+    "base": "EUR",
+    "date": "2022-06-26",
+    "rates": {
+        "BRL": 5.53503
+    }
+}

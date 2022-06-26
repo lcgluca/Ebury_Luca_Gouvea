@@ -22,6 +22,8 @@
         <name>GlobalValueSet</name>
     </types>
     <types>
+        <members>mockFIxerError</members>
+        <members>mockFixerSuccess</members>
         <members>NewTradeChatterPost</members>
         <name>StaticResource</name>
     </types>
@@ -45,6 +47,18 @@
     <types>
         <members>Trade__c-Trade Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>Trade__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Trade_Reviewers</members>
+        <name>Queue</name>
+    </types>
+    <types>
+        <members>Admin</members>
+        <name>Profile</name>
     </types>
     <version>55.0</version>
 </Package>

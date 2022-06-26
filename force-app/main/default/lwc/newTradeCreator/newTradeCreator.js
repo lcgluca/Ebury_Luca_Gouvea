@@ -75,6 +75,13 @@ export default class NewTradeCreator extends LightningElement {
                 this.template.querySelectorAll('lightning-input-field').forEach(field => {
                     if (field.name === "rate") field.value = result;
                 });
+            }).catch(error =>{
+                const event = new ShowToastEvent({
+                    title: 'Error',
+                    message: error.body.message,
+                    variant: 'error'
+                });
+                this.dispatchEvent(event);
             });
     }
 

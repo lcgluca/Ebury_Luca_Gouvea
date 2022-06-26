@@ -2,7 +2,6 @@ public with sharing class NewTradeController {
     
     @AuraEnabled (cacheable = true)
     public static List<Trade__c> getTradeList(){
-        try {
             return [SELECT Id,
                 Sell_Currency__c,
                 Buy_Currency__c,
@@ -12,9 +11,6 @@ public with sharing class NewTradeController {
                 Date_Booked__c
                 FROM Trade__c
                 ORDER BY createddate DESC];
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
     }
 
     @AuraEnabled
@@ -22,8 +18,14 @@ public with sharing class NewTradeController {
         try {
             List<String> symbols = new List<String>{symbol};
             GetLatestRateEndpoint.GetLatestRateResponse latestRate = new GetLatestRateEndpoint(base,symbols).execute();
-
+            
+            if(latestRate.error != null){
+                AuraHandledException ex = new AuraHandledException(latestRate.error.info);
+                ex.setMessage(latestRate.error.info);
+                throw ex;
+            }
             return latestRate.rates[0].rate;
+
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

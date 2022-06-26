@@ -34,6 +34,8 @@ public with sharing class TradeTriggerHandlerTest {
         System.runAs(user){
             Test.startTest();
             Trade__c trade = TestDataFactory.instantiateTrade(true);
+            List<Trade__c> tradeList =[SELECT Sell_Currency__c,Buy_Currency__c,Sell_Amount__c,Buy_Amount__c,Rate__c,Date_Booked__c FROM Trade__c];
+            Database.executeBatch(new NewTradePostBatch(tradeList));
             Test.stopTest();
         }
         
