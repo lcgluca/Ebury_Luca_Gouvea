@@ -1,0 +1,97 @@
+<template>
+    <lightning-layout class="slds-modal slds-fade-in-open slds-backdrop">
+        <lightning-layout class="slds-modal__container">         
+            <lightning-layout class="slds-modal__header">    
+                <h2 class="slds-modal__title" style="text-align: center">New Trade</h2>     
+            </lightning-layout>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template if:true={runSpinner}>
+                        <lightning-spinner size="small"></lightning-spinner>
+                    </template> 
+                    <lightning-record-edit-form object-api-name="Trade__c" onsuccess={handleTradeCreation}>
+                        <div>
+                            <lightning-layout horizontal-align="spread">
+                                <lightning-layout-item padding="around-small">
+                                    <div class="slds-grid slds-grid_vertical" style="margin-left: 30px">
+                                        <div class="slds-col">
+                                            <label class="slds-align_absolute-center">
+                                                <b>Sell Currency</b>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <lightning-input-field name="sellCurrency" field-name={sellCurrency} onchange={handleCurrencyChange} variant="label-hidden" required></lightning-input-field>
+                                        </div>
+                                        <br/>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <label class="slds-align_absolute-center">
+                                                <b>Sell Amount</b>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <lightning-input-field name="sellAmount" field-name={sellAmount} onchange={handleSellAmount} variant="label-hidden" required></lightning-input-field>
+                                        </div>  
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small">
+                                    <div class="slds-grid slds-grid_vertical">
+                                        <div class="slds-col">
+                                            <label class="slds-align_absolute-center">
+                                                <b>Rate</b>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <div class="slds-grid">
+                                                <div class="slds-col">
+                                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                                </div>
+                                                <div class="slds-col">
+                                                    <p><strong><span style="font-size: 20px;">
+                                                        <lightning-input-field name="rate" field-name={rate} disabled variant="label-hidden" ></lightning-input-field>
+                                                    </span></strong></p>
+                                                </div>
+                                                <div class="slds-col">
+                                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small">
+                                    <div class="slds-grid slds-grid_vertical" style="margin-right: 30px">
+                                        <div class="slds-col">
+                                            <label class="slds-align_absolute-center">
+                                                <b>Buy Currency</b>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <lightning-input-field name="buyCurrency" field-name={buyCurrency} onchange={handleCurrencyChange} variant="label-hidden" required></lightning-input-field>
+                                        </div>
+                                        <br/>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <label class="slds-align_absolute-center">
+                                                <b>Buy Amount</b>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="slds-col">
+                                            <lightning-input-field name="buyAmount" field-name={buyAmount} variant="label-hidden" disabled></lightning-input-field>
+                                        </div>  
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                        <div class="slds-modal__footer slds-modal__footer_directional">
+                            <button class="slds-button slds-button_brand" disabled={disableCreation} type="submit">Create</button>
+                            <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+        </lightning-layout>
+    </lightning-layout>
+</template>

@@ -3,7 +3,7 @@
     <fullName>Date_Booked__c</fullName>
     <externalId>false</externalId>
     <label>Date Booked</label>
-    <required>true</required>
+    <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>DateTime</type>

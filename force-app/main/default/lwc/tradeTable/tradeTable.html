@@ -1,0 +1,56 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card title="Booked Trades" icon-name="standard:partner_fund_allocation">
+        <template if:true={showOptions}>
+        <lightning-button variant="brand" label="New Trade" onclick={handleNewTradeButton} class="slds-float_right" style="margin-right: 15px"></lightning-button>
+            <template if:true={openNewTrade}>
+                <c-new-trade-creator oncancelcreation={handleCancel} ontradecreation={handleNewTrade}></c-new-trade-creator>      
+            </template>
+            <br/>
+            <br/>
+            <template if:true={showTable}>
+                <lightning-datatable
+                            key-field="Id"
+                            data-id="table"
+                            data={dataTable}
+                            columns={columns}
+                            hide-checkbox-column=true
+                            max-column-width="300px">
+                </lightning-datatable>
+                <br/>
+                <lightning-layout horizontal-align="space">
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button 
+                            label="Previous" 
+                            icon-name="utility:chevronleft" 
+                            onclick={previousHandler}>
+                        </lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        Page {page} of {totalPage}
+                    </lightning-layout-item>
+                    <lightning-layout-item flexibility="auto">
+                        <lightning-button 
+                            label="Next" 
+                            icon-name="utility:chevronright" 
+                            icon-position="right"
+                            onclick={nextHandler}>
+                        </lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </template>
+            <template if:false={showTable}>
+                <div style="margin-left: 15px">
+                        <b>No trades yet registered. Use "New Trade" button to create a new one!</b>
+                </div>
+            </template>    
+        </template>
+        <template if:true={showWarning}>
+            <div style="margin-left: 15px">
+                <p><lightning-icon icon-name="utility:warning"></lightning-icon> 
+                    <b>You don't have access to read on create Trades. Please contact your administrator for more information.</b>
+                </p> 
+            </div>
+        </template>    
+    </lightning-card>
+</template> 

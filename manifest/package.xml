@@ -25,5 +25,26 @@
         <members>NewTradeChatterPost</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>Fixer</members>
+        <name>NamedCredential</name>
+    </types>
+    <types>
+        <members>Ebury_App</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Ebury_UtilityBar</members>
+        <members>Home_Page_Default</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Fixer</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+    <types>
+        <members>Trade__c-Trade Layout</members>
+        <name>Layout</name>
+    </types>
     <version>55.0</version>
 </Package>

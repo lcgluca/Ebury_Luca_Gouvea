@@ -5,3 +5,4 @@ Buy Currency: %%BUY_CURRENCY%%
 Buy Amount: %%BUY_AMOUNT%%
 Rate: %%RATE%%
 Booked Date: %%DATETIME%%
+Link to the trade: %%TRADE_LINK%%

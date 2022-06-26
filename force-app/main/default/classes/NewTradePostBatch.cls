@@ -5,47 +5,52 @@
 * @version        1.0
 * @created        2022-06-22
 * @modified       2022-06-22
-* Purpose: 		  this batch will create a chatter post for each member of Queue regarding new Trades 
+* Purpose: 		  This batch will create a chatter post for each member of Queue regarding new Trades 
 */
 
-global class NewTradePostBatch implements Database.batchable<sObject>, Database.Stateful {
+public class NewTradePostBatch implements Database.batchable<sObject>, Database.Stateful {
 
-    global List<Trade__c> tradeSet;
+    public List<Trade__c> tradeSet;
     String bodyTemplate;
     
     //Constructor holds the Accounts that need to be updated
-    global NewTradePostBatch(List<Trade__c> tradeSet){
+    public NewTradePostBatch(List<Trade__c> tradeSet){
         this.tradeSet = tradeSet;
         this.bodyTemplate = [SELECT Id, Body FROM StaticResource WHERE Name = 'NewTradeChatterPost' LIMIT 1].Body.toString();
     }
     
-    global Database.QueryLocator start(Database.BatchableContext BC){    
+    public Database.QueryLocator start(Database.BatchableContext BC){    
         Id queueId = [SELECT Id FROM Group WHERE type = 'Queue' AND DeveloperName ='Trade_Reviewers' LIMIT 1].Id;   
         return Database.getQueryLocator([SELECT UserOrGroupId FROM GroupMember WHERE GroupId =:queueId]);       
     }
     
     //Execute will separate Accounts and respective Cases in a map and perform the calculations
-    global void execute(Database.BatchableContext BC, List<GroupMember> scope){
+    public void execute(Database.BatchableContext BC, List<GroupMember> scope){
 
-        List<FeedItem> feedItemList = new List<FeedItem>();
-        
-        if(!scope.isEmpty()){      
-            for(Trade__c trade : tradeSet){
-                String body = buildPostBody(trade, bodyTemplate);
+        try{
+            List<FeedItem> feedItemList = new List<FeedItem>();
+                    
+            if(!scope.isEmpty()){      
+                for(Trade__c trade : tradeSet){
+                    String body = buildPostBody(trade, bodyTemplate);
 
-                for(GroupMember member : scope){
-                    FeedItem post = new FeedItem();
-                    post.Body = body;
-                    post.ParentId = member.UserOrGroupId;
-                    feedItemList.add(post);
+                    for(GroupMember member : scope){
+                        FeedItem post = new FeedItem();
+                        post.Body = body;
+                        post.ParentId = member.UserOrGroupId;
+                        feedItemList.add(post);
+                    }
                 }
+
+                Database.insert(feedItemList, true);
             }
 
-            Database.insert(feedItemList, true);
+        }catch(Exception ex){
+            throw new NewTradeBatchException('Error on chatter posts creation');
         }
     }
     
-    global void finish(Database.BatchableContext BC){
+    public void finish(Database.BatchableContext BC){
         
     }
 
@@ -60,4 +65,6 @@ global class NewTradePostBatch implements Database.batchable<sObject>, Database.
 
         return body;
     }
+
+    public class NewTradeBatchException extends Exception {}
 }

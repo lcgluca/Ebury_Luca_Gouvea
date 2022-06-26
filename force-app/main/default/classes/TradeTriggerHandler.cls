@@ -24,7 +24,9 @@ public without sharing class TradeTriggerHandler extends TriggerHandler{
     
     public override void beforeUpdate(){}
     
-    public override void beforeInsert(){}
+    public override void beforeInsert(){
+        saveDateBooked(newTradeList);
+    }
     
     public override void beforeDelete(){}
     
@@ -38,8 +40,16 @@ public without sharing class TradeTriggerHandler extends TriggerHandler{
     
     public override void afterUndelete(){}
 
-    public static void newChatterPost(List<Trade__c> newTradeList){
-
+    private static void newChatterPost(List<Trade__c> newTradeList){
         Database.executebatch(new NewTradePostBatch(newTradeList));
     }
+
+    private static void saveDateBooked(List<Trade__c> newTradeList){
+
+        for(Trade__c trade : newTradeList){
+            if(trade.Date_Booked__c == null) trade.Date_Booked__c = DateTime.now();
+        }
+    }
+
+
 }
