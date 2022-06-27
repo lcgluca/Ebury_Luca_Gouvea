@@ -5,6 +5,7 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+Id queueId = [SELECT Id FROM Group WHERE type = 'Queue' AND DeveloperName ='Trade_Reviewers' LIMIT 1].Id;
+Id userId =  [SELECT Id FROM User WHERE Name = 'User User' LIMIT 1].Id;
+GroupMember gm = new GroupMember(UserOrGroupId = userId, GroupId = queueId);
+insert gm;
