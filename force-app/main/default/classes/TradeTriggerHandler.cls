@@ -31,7 +31,8 @@ public without sharing class TradeTriggerHandler extends TriggerHandler{
     }
 
     private static void newChatterPost(List<Trade__c> newTradeList){
-       if(!Test.isRunningTest()) Database.executebatch(new NewTradePostBatch(newTradeList));
+        //junks of 100 to not exceed DML limits
+       if(!Test.isRunningTest()) Database.executebatch(new NewTradePostBatch(newTradeList), 100);
     }
 
     private static void saveDateBooked(List<Trade__c> newTradeList){

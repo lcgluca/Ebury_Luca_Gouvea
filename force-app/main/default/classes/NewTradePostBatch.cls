@@ -42,7 +42,15 @@ public class NewTradePostBatch implements Database.batchable<sObject>, Database.
                     }
                 }
 
-                Database.insert(feedItemList, true);
+                Database.SaveResult[] srList = Database.insert(feedItemList, false);
+                for (Database.SaveResult sr : srList) {
+                    if (!sr.isSuccess()) {
+                        // Operation failed, so get all errors                
+                        for(Database.Error err : sr.getErrors()) {
+                            System.debug(err.getStatusCode() + ': ' + err.getMessage());
+                        }
+                    }
+                }
             }
 
         }catch(Exception ex){
@@ -51,7 +59,7 @@ public class NewTradePostBatch implements Database.batchable<sObject>, Database.
     }
     
     public void finish(Database.BatchableContext BC){
-        
+        //Treatment of errors could be here
     }
 
     private static String buildPostBody(Trade__c trade, String bodyTemplate){

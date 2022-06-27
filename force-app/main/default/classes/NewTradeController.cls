@@ -20,7 +20,7 @@ public with sharing class NewTradeController {
                 Rate__c,
                 Date_Booked__c
                 FROM Trade__c
-                ORDER BY createddate DESC];
+                ORDER BY createddate DESC LIMIT 500];
     }
 
     @AuraEnabled
