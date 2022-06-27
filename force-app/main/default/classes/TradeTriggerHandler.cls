@@ -3,8 +3,8 @@
 * @modifiedBy     Luca Gouvea 
 * @maintainedBy   Luca Gouvea
 * @version        1.0
-* @created        2022-01-25
-* @modified       2022-01-27
+* @created        2022-06-25
+* @modified       2022-06-25
 * Purpose:        class used to hold all methods needed in TradeTrigger
 */
 
@@ -40,6 +40,4 @@ public without sharing class TradeTriggerHandler extends TriggerHandler{
             if(trade.Date_Booked__c == null) trade.Date_Booked__c = DateTime.now();
         }
     }
-
-
 }

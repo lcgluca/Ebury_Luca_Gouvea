@@ -10,6 +10,7 @@ export default class NewTrade extends LightningElement {
     showOptions = false;
     showWarning = false;
     showTable = false;
+    noTradeMessage = false;
     tradeList
     @api openNewTrade = false;
     @track page = 1;
@@ -17,7 +18,7 @@ export default class NewTrade extends LightningElement {
     @track items = [];
     @track startingRecord = 1;
     @track endingRecord = 0; 
-    @api pageSize = 10;  //pageSize can be defined via DesignAttribute
+    @api pageSize = 10;                 //pageSize can be defined via DesignAttribute
     @track totalRecountCount = 0;
     @track totalPage = 0;
     isPageChanged = false;
@@ -47,7 +48,10 @@ export default class NewTrade extends LightningElement {
         if(data){
             if(data.length > 0){
                 this.showTable = true;
+                this.noTradeMessage = false;
                 this.processRecords(data);
+            }else{
+                this.noTradeMessage = true;
             }
         }
     }
@@ -66,16 +70,8 @@ export default class NewTrade extends LightningElement {
         this.openNewTrade = false;
     }
 
-    processRecords(data){
-        this.items = data;
-        this.totalRecountCount = data.length; 
-        this.totalPage = Math.ceil(this.totalRecountCount / this.pageSize); 
-        
-        this.dataTable = this.items.slice(0,this.pageSize); 
-        this.endingRecord = this.pageSize;
-    }
-
-    previousHandler() {
+    
+    previousHandler() {         //clicking on previous button this method will be called
         this.isPageChanged = true;
         if (this.page > 1) {
             this.page = this.page - 1; //decrease page by 1
@@ -90,8 +86,8 @@ export default class NewTrade extends LightningElement {
           ).selectedRows = selectedIds;
     }
 
-    //clicking on next button this method will be called
-    nextHandler() {
+    
+    nextHandler() {         //clicking on next button this method will be called
         this.isPageChanged = true;
         if((this.page<this.totalPage) && this.page !== this.totalPage){
             this.page = this.page + 1; //increase page by 1
@@ -104,6 +100,16 @@ export default class NewTrade extends LightningElement {
         this.template.querySelector(
             '[data-id="table"]'
           ).selectedRows = selectedIds;
+    }
+
+    //Helpers 
+    processRecords(data){
+        this.items = data;
+        this.totalRecountCount = data.length; 
+        this.totalPage = Math.ceil(this.totalRecountCount / this.pageSize); 
+        
+        this.dataTable = this.items.slice(0,this.pageSize); 
+        this.endingRecord = this.pageSize;
     }
 
     displayRecordPerPage(page){

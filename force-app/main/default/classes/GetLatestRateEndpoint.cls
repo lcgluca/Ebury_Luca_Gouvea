@@ -1,3 +1,13 @@
+/*
+* @author         Luca Gouvea
+* @modifiedBy     Luca Gouvea 
+* @maintainedBy   Luca Gouvea
+* @version        1.0
+* @created        2022-06-25
+* @modified       2022-06-25
+* Purpose:        Constructs the endpoint and treats both request and response of Fixer callouts
+*/
+
 public inherited sharing class GetLatestRateEndpoint extends FixerEndpoint{
     private String base;
     private List<String> symbols;

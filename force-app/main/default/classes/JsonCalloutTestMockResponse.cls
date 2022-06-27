@@ -1,3 +1,13 @@
+/*
+* @author         Luca Gouvea
+* @modifiedBy     Luca Gouvea 
+* @maintainedBy   Luca Gouvea
+* @version        1.0
+* @created        2022-06-25
+* @modified       2022-06-25
+* Purpose:        HttpCalloutMock for JsonCallout abstract class
+*/
+
 public with sharing class JsonCalloutTestMockResponse implements HttpCalloutMock{
     public HttpResponse respond(HttpRequest req) {
         HttpResponse result = new HttpResponse();

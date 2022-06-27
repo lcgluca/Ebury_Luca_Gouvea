@@ -1,3 +1,13 @@
+/*
+* @author         Luca Gouvea
+* @modifiedBy     Luca Gouvea 
+* @maintainedBy   Luca Gouvea
+* @version        1.0
+* @created        2022-06-25
+* @modified       2022-06-25
+* Purpose:        Test class for NewTradeController
+*/
+
 @isTest
 public with sharing class NewTradeControllerTest {
     
@@ -65,6 +75,5 @@ public with sharing class NewTradeControllerTest {
 
             System.assert(testList.size() > 0, 'Retrieved all trades.');
         }
-
     }
 }

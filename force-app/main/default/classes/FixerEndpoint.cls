@@ -1,3 +1,13 @@
+/*
+* @author         Luca Gouvea
+* @modifiedBy     Luca Gouvea 
+* @maintainedBy   Luca Gouvea
+* @version        1.0
+* @created        2022-06-25
+* @modified       2022-06-25
+* Purpose:        Constructs the header and holds the authentications for Fixer callouts
+*/
+
 public abstract class FixerEndpoint extends JsonCallouts{
 
     protected final String API_KEY = 'Mj9iw5shwdaIjQP7szwAuWsGGqRYdguH';

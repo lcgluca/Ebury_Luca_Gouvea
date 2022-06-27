@@ -76,6 +76,7 @@ export default class NewTradeCreator extends LightningElement {
                     if (field.name === "rate") field.value = result;
                 });
             }).catch(error =>{
+                this.runSpinner = false;
                 const event = new ShowToastEvent({
                     title: 'Error',
                     message: error.body.message,

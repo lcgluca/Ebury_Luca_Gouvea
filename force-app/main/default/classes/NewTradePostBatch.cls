@@ -13,7 +13,7 @@ public class NewTradePostBatch implements Database.batchable<sObject>, Database.
     public List<Trade__c> tradeSet;
     String bodyTemplate;
     
-    //Constructor holds the Accounts that need to be updated
+    //Constructor holds the Trades in case of multiple insertion
     public NewTradePostBatch(List<Trade__c> tradeSet){
         this.tradeSet = tradeSet;
         this.bodyTemplate = [SELECT Id, Body FROM StaticResource WHERE Name = 'NewTradeChatterPost' LIMIT 1].Body.toString();
@@ -24,7 +24,7 @@ public class NewTradePostBatch implements Database.batchable<sObject>, Database.
         return Database.getQueryLocator([SELECT UserOrGroupId FROM GroupMember WHERE GroupId =:queueId]);       
     }
     
-    //Execute will separate Accounts and respective Cases in a map and perform the calculations
+    //Execute will create the message for every Trade and then create a Chatter post for every queue member
     public void execute(Database.BatchableContext BC, List<GroupMember> scope){
 
         try{

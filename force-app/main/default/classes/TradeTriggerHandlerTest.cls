@@ -1,6 +1,7 @@
  @isTest
 public with sharing class TradeTriggerHandlerTest {
 
+    //Preparing data and generic user to run tests
     @TestSetup
     static void makeData(){
         PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = 'Ebury_App'];
@@ -54,7 +55,6 @@ public with sharing class TradeTriggerHandlerTest {
             }catch(Exception ex){
                 system.assert(true, 'Chatter posts with error.');
             }
-            
             Test.stopTest();
         }
     }

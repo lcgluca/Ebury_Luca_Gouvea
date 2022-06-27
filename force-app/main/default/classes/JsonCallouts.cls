@@ -1,3 +1,13 @@
+/*
+* @author         Luca Gouvea
+* @modifiedBy     Luca Gouvea 
+* @maintainedBy   Luca Gouvea
+* @version        1.0
+* @created        2022-06-25
+* @modified       2022-06-25
+* Purpose:        Provide a standard for all callouts 
+*/
+
 public abstract with sharing class JsonCallouts {
     private HttpRequest request;
     private HttpResponse response;

@@ -1,3 +1,13 @@
+/*
+* @author         Luca Gouvea
+* @modifiedBy     Luca Gouvea 
+* @maintainedBy   Luca Gouvea
+* @version        1.0
+* @created        2022-06-25
+* @modified       2022-06-25
+* Purpose:        Helper class for JsonCalloutTest
+*/
+
 public class JsonCalloutTestEndpoint extends JsonCallouts {
     private final static String CALLOUT_ENDPOINT = '/somepath/totest';
     private final static String CALLOUT_METHOD = 'POST';
