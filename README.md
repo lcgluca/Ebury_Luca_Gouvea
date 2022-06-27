@@ -1,18 +1,13 @@
-# Salesforce DX Project: Next Steps
+# Luca Gouvea Ebury Test
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+welcome, feel free to test my application!
 
-## How Do You Plan to Deploy Your Changes?
+Use the create_scratch_org.sh script to deploy the project.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Please use the "Ebury" lightning app - there you can find the components to create new Trades.
 
-## Configure Your Salesforce DX Project
+The table presented has as default 10 rows per pagination. That number can be easily changed in the component's Design Attributes.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+If you want to run tests with a different user (not admin) - please use the Ebury_App permissionSet.
 
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+For more questions please reach me at lcglucagouvea@gmail.com
